@@ -83,11 +83,11 @@ export default function Navigation({ currentView, onViewChange, isOpen, onClose,
                     lg:flex-col lg:gap-1 lg:text-center lg:p-4
                     ${isActive
                       ? 'bg-orange-100 text-warm-orange shadow-3d'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
+                      : 'text-white hover:bg-white hover:bg-opacity-10 hover:text-white'
                     }
                   `}
                 >
-                  <Icon className="h-6 w-6 lg:h-8 lg:w-8" />
+                  <Icon className="h-6 w-6 lg:h-8 lg:w-8 text-white" />
                   <span className="font-medium text-sm lg:text-xs">
                     {item.label}
                   </span>

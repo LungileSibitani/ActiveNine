@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 import { useOfflineStorage } from '../../hooks/useOfflineStorage';
 import type { Business } from '../../types';
-import lungile from '../../Lungile.jpg';
 
 import Comfort from '../../Comfort.jpg';
 
@@ -27,8 +26,8 @@ export default function MarketplaceView() {
     {
       id: '1',
       name: 'Lungile\'s Crafts Corner',
-      owner: 'Lungile Mthembu',
-      description: 'Handmade African crafts, jewelry, and traditional artwork. Each piece tells a story of our heritage.',
+      owner: 'Lungile Sibitane',
+      description: 'Sells Fresh and healthy fruits 24/7',
       category: 'Arts & Crafts',
       location: 'Section 12, Main Market',
       township: 'Soweto',
@@ -36,7 +35,7 @@ export default function MarketplaceView() {
       email: 'lungile@email.com',
       products: [],
       services: [],
-      images: ['/images/lungile.jpg'],
+      images: ['/images/Lungile.jpg'],
       isVerified: true,
       rating: 4.9,
       reviewCount: 45,
@@ -45,12 +44,12 @@ export default function MarketplaceView() {
     },
     {
       id: '2',
-      name: 'Kamo\'s Fresh Produce',
+      name: 'Kamo\'s Fresh',
       owner: 'Kamo Nkosi',
-      description: 'Fresh vegetables and fruits from local farms. We deliver farm-fresh goodness to your doorstep.',
+      description: 'Kamo\'s Fresh is a small business located in Ga-Rankuwa, offering coffee and other products. It benefits from the Dintshang Business platform, which has provided valuable visibility, allowing both local residents and new customers to discover this refreshing spot.',
       category: 'Food & Beverages',
-      location: 'Corner of Church & Market St',
-      township: 'Mamelodi',
+      location: 'Ga-Rankuwa',
+      township: 'Ga-Rankuwa',
       phone: '082 987 6543',
       products: [],
       services: [],
@@ -63,10 +62,10 @@ export default function MarketplaceView() {
     },
     {
       id: '3',
-      name: 'Kea\'s Beauty Studio',
+      name: 'Kea\'s Boutique store',
       owner: 'Kea Dlamini',
-      description: 'Professional hair styling, makeup, and beauty treatments. Making you look and feel amazing.',
-      category: 'Health & Beauty',
+      description: 'Fresh flowers bring smile , harvested from the garden.',
+      category: 'Health ',
       location: 'Shop 15, Central Plaza',
       township: 'Alexandra',
       phone: '076 555 1234',
@@ -81,11 +80,11 @@ export default function MarketplaceView() {
     },
     {
       id: '4',
-      name: 'Ncebo\'s Tech Repairs',
+      name: 'Ncebo\'s Energy Drinks',
       owner: 'Ncebo Zulu',
-      description: 'Expert phone, laptop, and electronics repair. Fast, reliable service with warranty on all repairs.',
-      category: 'Technology',
-      location: 'Block 7, Electronics Row',
+      description: 'Unleash your potential and boost your energy with Ncebo\'s range of refreshing energy drinks, available in Soshanguve Block L.',
+      category: ' Beverages',
+      location: 'Block L',
       township: 'Soshanguve',
       phone: '073 111 2222',
       products: [],
@@ -117,12 +116,12 @@ export default function MarketplaceView() {
     },
     {
       id: '6',
-      name: 'Rhulane\'s Auto Services',
+      name: 'Rhulane\'s Fresh Water',
       owner: 'Rhulane Mokoena',
-      description: 'Complete automotive services including repairs, maintenance, and panel beating. Your car is in good hands.',
-      category: 'Services',
-      location: 'Workshop 3, Main Road',
-      township: 'Hammanskraal',
+      description: '💧 Rhulane\'s Fresh Water – Mabopane 1632 Str At Rhulane\'s Fresh Water, we believe nothing refreshes the body and mind like pure, clean water. Located right here in Mabopane 1632 Str, we proudly serve our community with safe, affordable, and always fresh water. Our customers know us for reliability, friendliness, and quality you can trust. Every drop is handled with care — because your health and hydration matter most. 👉 "Sure Dintshang?" Whether you\'re heading home, going to work, or just passing by, make a stop at Rhulane\'s Fresh Water and quench your thirst the right way. Why choose us? ✅ Fresh & clean water ✅ Affordable prices ✅ Convenient local service in Mabopane ✅ Friendly customer care Stay hydrated, stay healthy — with Rhulane\'s Fresh Water.',
+      category: 'Water',
+      location: 'Mabopane 1632 Str',
+      township: 'Mabopane',
       phone: '072 555 6666',
       products: [],
       services: [],
@@ -135,10 +134,10 @@ export default function MarketplaceView() {
     },
     {
       id: '7',
-      name: 'Tebogo\'s Fashion House',
+      name: 'Tebogo\'s Internet Cafee',
       owner: 'Tebogo Masemola',
-      description: 'Trendy African fashion, custom designs, and alterations. Express your style with our unique pieces.',
-      category: 'Fashion & Clothing',
+      description: 'Printing and copies services available',
+      category: 'Internet Cafee',
       location: 'Shop 22, Fashion Square',
       township: 'Ga-Rankuwa',
       phone: '081 777 8888',
@@ -153,9 +152,9 @@ export default function MarketplaceView() {
     },
     {
       id: '8',
-      name: 'Comfort\'s Business',
+      name: 'Comfort\' Jewellary shop',
       owner: 'Comfort',
-      description: 'Quality products and services tailored for our community. Excellence in everything we do.',
+      description: 'Gold jewelary of all days',
       category: 'Food & Beverages',
       location: 'Stand 45, Market Street',
       township: 'Mabopane',
@@ -281,8 +280,8 @@ export default function MarketplaceView() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">Township Marketplace</h1>
-        <p className="text-gray-600">Discover amazing businesses from our community entrepreneurs</p>
+        <h1 className="text-2xl font-bold text-white mb-2">Township Marketplace</h1>
+        <p className="text-white">Discover amazing businesses from our community entrepreneurs</p>
       </div>
 
       {/* Search and Filters */}
