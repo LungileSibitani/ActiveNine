@@ -10,6 +10,8 @@ import LearnView from './components/views/LearnView';
 import FinanceView from './components/views/FinanceView';
 import LoginView from './components/views/LoginView';
 import RegisterView from './components/views/RegisterView';
+import AdminDashboard from './components/views/AdminDashboard';
+import AdminLoginView from './components/views/AdminLoginView';
 
 type UserRole = 'buyer' | 'entrepreneur' | null;
 
@@ -26,7 +28,15 @@ function App() {
     name: ''
   });
 
-  // Check if user is already logged in on app start
+  const [admin, setAdmin] = useState<{
+    isLoggedIn: boolean;
+    username: string;
+  }>({
+    isLoggedIn: false,
+    username: ''
+  });
+
+  // Check if user or admin is already logged in on app start
   useEffect(() => {
     const savedUser = localStorage.getItem('dintshang_user');
     if (savedUser) {
@@ -37,6 +47,19 @@ function App() {
       } catch (error) {
         console.error('Error parsing saved user data:', error);
         localStorage.removeItem('dintshang_user');
+      }
+    }
+
+    // Check if admin is already logged in
+    const savedAdmin = localStorage.getItem('dintshang_admin');
+    if (savedAdmin) {
+      try {
+        const adminData = JSON.parse(savedAdmin);
+        setAdmin(adminData);
+        setCurrentView('admin'); // Go directly to admin dashboard if already logged in
+      } catch (error) {
+        console.error('Error parsing saved admin data:', error);
+        localStorage.removeItem('dintshang_admin');
       }
     }
   }, []);
@@ -75,6 +98,17 @@ function App() {
     setCurrentView('home');
   };
 
+  const handleAdminLogin = (username: string) => {
+    const adminData = {
+      isLoggedIn: true,
+      username: username
+    };
+    setAdmin(adminData);
+    // Save admin data to localStorage
+    localStorage.setItem('dintshang_admin', JSON.stringify(adminData));
+    setCurrentView('admin');
+  };
+
   const handleLogout = () => {
     setUser({
       isLoggedIn: false,
@@ -82,6 +116,15 @@ function App() {
       name: ''
     });
     localStorage.removeItem('dintshang_user');
+    setCurrentView('landing');
+  };
+
+  const handleAdminLogout = () => {
+    setAdmin({
+      isLoggedIn: false,
+      username: ''
+    });
+    localStorage.removeItem('dintshang_admin');
     setCurrentView('landing');
   };
 
@@ -105,6 +148,10 @@ function App() {
         return <LoginView onViewChange={handleViewChange} onLogin={handleLogin} />;
       case 'register':
         return <RegisterView onViewChange={handleViewChange} onLogin={handleLogin} />;
+      case 'admin':
+        return <AdminDashboard onViewChange={handleViewChange} />;
+      case 'admin-login':
+        return <AdminLoginView onViewChange={handleViewChange} onAdminLogin={handleAdminLogin} />;
       default:
         return <LandingView onViewChange={handleViewChange} />;
     }
@@ -112,42 +159,42 @@ function App() {
 
   return (
     <div className="min-h-screen bg-custom-gradient">
-      {/* Hide Header and Navigation completely on login, register, and landing pages */}
-      {!['login', 'register', 'landing'].includes(currentView) && (
+      {/* Hide Header and Navigation completely on login, register, landing, and admin-login pages */}
+      {!['login', 'register', 'landing', 'admin-login'].includes(currentView) && (
         <Header
           currentView={currentView}
           onMenuToggle={handleMenuToggle}
           user={user}
-          onLogout={handleLogout}
-          onHome={handleLogout}
+          onLogout={currentView === 'admin' ? handleAdminLogout : handleLogout}
+          onHome={currentView === 'admin' ? handleAdminLogout : handleLogout}
           showLogoutButton={true}
         />
       )}
 
       <div className="container mx-auto px-4 py-6">
-        {/* Hide Navigation completely on login, register, and landing pages */}
-        {!['login', 'register', 'landing'].includes(currentView) && (
+        {/* Hide Navigation completely on login, register, landing, and admin-login pages */}
+        {!['login', 'register', 'landing', 'admin-login'].includes(currentView) && (
           <>
             {/* Desktop Navigation */}
             <div className="hidden lg:block mb-8">
-              <Navigation
-                currentView={currentView}
-                onViewChange={handleViewChange}
-                isOpen={false}
-                onClose={() => {}}
-                userRole={user.role}
-              />
+            <Navigation
+              currentView={currentView}
+              onViewChange={handleViewChange}
+              isOpen={false}
+              onClose={() => {}}
+              userRole={currentView === 'admin' ? 'admin' : user.role}
+            />
             </div>
 
             {/* Mobile Navigation */}
             <div className="lg:hidden">
-              <Navigation
-                currentView={currentView}
-                onViewChange={handleViewChange}
-                isOpen={isMenuOpen}
-                onClose={() => setIsMenuOpen(false)}
-                userRole={user.role}
-              />
+            <Navigation
+              currentView={currentView}
+              onViewChange={handleViewChange}
+              isOpen={isMenuOpen}
+              onClose={() => setIsMenuOpen(false)}
+              userRole={currentView === 'admin' ? 'admin' : user.role}
+            />
             </div>
           </>
         )}

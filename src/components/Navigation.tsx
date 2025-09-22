@@ -9,23 +9,29 @@ import {
   X
 } from 'lucide-react';
 
+interface NavigationItem {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
 interface NavigationProps {
   currentView: string;
   onViewChange: (view: string) => void;
   isOpen: boolean;
   onClose: () => void;
-  userRole: 'buyer' | 'entrepreneur' | null;
+  userRole: 'buyer' | 'entrepreneur' | 'admin' | null;
 }
 
 export default function Navigation({ currentView, onViewChange, isOpen, onClose, userRole }: NavigationProps) {
   // Navigation items for buyers
-  const buyerNavItems = [
+  const buyerNavItems: NavigationItem[] = [
     { id: 'home', label: 'Home', icon: Home },
     { id: 'marketplace', label: 'Marketplace', icon: ShoppingCart },
   ];
 
   // Navigation items for entrepreneurs
-  const entrepreneurNavItems = [
+  const entrepreneurNavItems: NavigationItem[] = [
     { id: 'home', label: 'Home', icon: Home },
     { id: 'business', label: 'My Business', icon: Store },
     { id: 'tools', label: 'Business Tools', icon: Wrench },
@@ -33,13 +39,26 @@ export default function Navigation({ currentView, onViewChange, isOpen, onClose,
     { id: 'finance', label: 'Financial Services', icon: CreditCard },
   ];
 
+  // No navigation items for admin
+  const adminNavItems: NavigationItem[] = [];
+
   // Choose navigation items based on user role
-  const navItems = userRole === 'buyer' ? buyerNavItems : entrepreneurNavItems;
+  const navItems = userRole === 'buyer' ? buyerNavItems : 
+                   userRole === 'entrepreneur' ? entrepreneurNavItems : 
+                   userRole === 'admin' ? adminNavItems : [];
 
   const handleNavClick = (viewId: string) => {
     onViewChange(viewId);
     onClose();
   };
+
+  // Don't render navigation for admin users
+  if (userRole === 'admin') {
+    console.log('Navigation: Admin user detected, hiding navigation');
+    return null;
+  }
+
+  console.log('Navigation: Rendering navigation for user role:', userRole);
 
   return (
     <>

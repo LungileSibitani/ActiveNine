@@ -6,10 +6,10 @@ import {
   Mail,
   Phone,
   MapPin,
-  ChevronRight,
   Star,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  Settings
 } from 'lucide-react';
 
 interface LandingViewProps {
@@ -301,6 +301,17 @@ export default function LandingView({ onViewChange }: LandingViewProps) {
             <Star className="h-5 w-5 text-warm-orange" />
             <span className="text-orange-100">Made with ❤️ for South African entrepreneurs</span>
             <Star className="h-5 w-5 text-warm-orange" />
+          </div>
+
+          {/* Admin Access Button */}
+          <div className="mt-6">
+            <button
+              onClick={() => onViewChange('admin-login')}
+              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300 text-sm font-medium flex items-center gap-2 mx-auto"
+            >
+              <Settings className="h-4 w-4" />
+              Admin Access
+            </button>
           </div>
         </div>
       </footer>
