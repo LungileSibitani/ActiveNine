@@ -11,6 +11,9 @@ import {
 } from 'lucide-react';
 import { useOfflineStorage } from '../../hooks/useOfflineStorage';
 import type { Business } from '../../types';
+import lungile from '../../Lungile.jpg';
+
+import Comfort from '../../Comfort.jpg';
 
 export default function MarketplaceView() {
   const [businesses] = useOfflineStorage<Business[]>('businesses', []);
@@ -19,7 +22,7 @@ export default function MarketplaceView() {
   const [selectedTownship, setSelectedTownship] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  // Sample businesses with the 8 entrepreneurs using correct image paths
+  // Sample businesses with the 8 entrepreneurs using public URLs
   const sampleBusinesses: Business[] = [
     {
       id: '1',
@@ -33,7 +36,7 @@ export default function MarketplaceView() {
       email: 'lungile@email.com',
       products: [],
       services: [],
-      images: ['../../Lungile.jpg'],
+      images: ['/images/lungile.jpg'],
       isVerified: true,
       rating: 4.9,
       reviewCount: 45,
@@ -51,7 +54,7 @@ export default function MarketplaceView() {
       phone: '082 987 6543',
       products: [],
       services: [],
-      images: ['../../Kamo.jpg'],
+      images: ['/images/Kamo.jpg'],
       isVerified: true,
       rating: 4.7,
       reviewCount: 32,
@@ -69,7 +72,7 @@ export default function MarketplaceView() {
       phone: '076 555 1234',
       products: [],
       services: [],
-      images: ['../../Kea.jpg'],
+      images: ['/images/Kea.jpg'],
       isVerified: true,
       rating: 4.8,
       reviewCount: 28,
@@ -87,7 +90,7 @@ export default function MarketplaceView() {
       phone: '073 111 2222',
       products: [],
       services: [],
-      images: ['../../Ncebo.jpg'],
+      images: ['/images/Ncebo.jpg'],
       isVerified: true,
       rating: 4.6,
       reviewCount: 19,
@@ -105,7 +108,7 @@ export default function MarketplaceView() {
       phone: '084 333 4444',
       products: [],
       services: [],
-      images: ['../../Onthatile.jpg'],
+      images: ['/images/Onthatile5.jpg'],
       isVerified: false,
       rating: 4.9,
       reviewCount: 41,
@@ -123,7 +126,7 @@ export default function MarketplaceView() {
       phone: '072 555 6666',
       products: [],
       services: [],
-      images: ['../../Rhulane.jpg'],
+      images: ['/images/Rhulane.jpg'],
       isVerified: true,
       rating: 4.5,
       reviewCount: 23,
@@ -141,7 +144,7 @@ export default function MarketplaceView() {
       phone: '081 777 8888',
       products: [],
       services: [],
-      images: ['../../Tebogo.jpg'],
+      images: ['/images/Tebogo.jpg'],
       isVerified: true,
       rating: 4.8,
       reviewCount: 37,
@@ -150,16 +153,16 @@ export default function MarketplaceView() {
     },
     {
       id: '8',
-      name: 'Lungile\'s Bakery',
-      owner: 'Lungile Ndlovu',
-      description: 'Freshly baked bread, cakes, and pastries. Made with love using traditional recipes and modern techniques.',
+      name: 'Comfort\'s Business',
+      owner: 'Comfort',
+      description: 'Quality products and services tailored for our community. Excellence in everything we do.',
       category: 'Food & Beverages',
       location: 'Stand 45, Market Street',
       township: 'Mabopane',
       phone: '079 999 0000',
       products: [],
       services: [],
-      images: ['../../Lungile.jpg'],
+      images: [Comfort],
       isVerified: true,
       rating: 4.7,
       reviewCount: 29,
