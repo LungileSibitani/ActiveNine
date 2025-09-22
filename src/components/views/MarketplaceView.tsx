@@ -27,7 +27,7 @@ export default function MarketplaceView() {
       id: '1',
       name: 'Lungile\'s Crafts Corner',
       owner: 'Lungile Sibitane',
-      description: 'Sells Fresh and healthy fruits 24/7',
+      description: 'Handmade African crafts, jewelry, and traditional artwork. Each piece tells a story of our heritage.',
       category: 'Arts & Crafts',
       location: 'Section 12, Main Market',
       township: 'Soweto',
